@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Event Bus Sample</title>
+  </head>
+  <body>
+    <div id="app">
+      <child-component v-bind:propsdata="message"></child-component>
+	  <sibling-component v-bind:propsdata2="message2"></sibling-component>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+      Vue.component('child-component',{
+		props:['propsdata'],
+		template:'<p>{{propsdata}}</p>'
+	  });
+	  Vue.component('sibling-component',{
+		props:['propsdata2'],
+		template:'<button v-on:click="">{{propsdata2}}</button>'
+	  });
+	  var app = new Vue({
+		el : '#app',
+		data : {
+			message : 'Hello Vue!',
+			message2: 'Hello text'
+		}
+	  });
+    </script>
+  </body>
+</html>
